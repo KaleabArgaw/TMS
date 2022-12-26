@@ -17,6 +17,7 @@ public class DaysOfWeekService extends CrudService<DayOfWeek, Long> {
         super(repository, new DayOfWeek());
         this.daysOfWeekRepository = repository;
     }
+
     public void init() {
         Arrays.stream(BusinessDictionary.WEEKDAYS).forEach(weekday -> create(new DayOfWeek(weekday)));
     }

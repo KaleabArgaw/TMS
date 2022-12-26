@@ -11,6 +11,7 @@ import javax.persistence.*;
 @Builder
 
 public class Contract extends Model {
+
     private Long tutorId;
     private Long studentId;
     private double amount;

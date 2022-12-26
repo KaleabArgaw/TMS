@@ -33,9 +33,9 @@ public class TutorInDto {
     private String department;
     private Long educationalLevel;
     private int higherLevelResult;
-    private File tempo;
-    private File resume;
-    private File kebeleId;
+    private MultipartFile tempo;
+    private MultipartFile resume;
+    private MultipartFile kebeleId;
 
     //AvailabilityDays
     private List<Long> weekDays;

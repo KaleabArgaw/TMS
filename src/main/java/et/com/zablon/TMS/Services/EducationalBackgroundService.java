@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class EducationalBackgroundService extends CrudService<EducationalBackground, Long> {
+
     private final EducationalBackgroundRepository educationalBackgroundRepository;
 
     public EducationalBackgroundService(EducationalBackgroundRepository repository) {
