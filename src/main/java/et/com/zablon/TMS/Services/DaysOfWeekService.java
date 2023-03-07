@@ -1,7 +1,6 @@
 package et.com.zablon.TMS.Services;
 
 import et.com.zablon.TMS.Models.DayOfWeek;
-import et.com.zablon.TMS.Models.EducationLevel;
 import et.com.zablon.TMS.Repositories.DaysOfWeekRepository;
 import et.com.zablon.TMS.Utils.BusinessDictionary;
 import org.springframework.stereotype.Service;

@@ -1,17 +1,13 @@
 package et.com.zablon.TMS.Dtos;
 
-import et.com.zablon.TMS.Models.DayOfWeek;
-import et.com.zablon.TMS.Models.EducationLevel;
-import et.com.zablon.TMS.Models.Gender;
+import et.com.zablon.TMS.Models.Enums.Gender;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,17 +18,17 @@ public class TutorInDto {
     private String customId;
     private Gender gender;
     private Date dateOfBirth;
-    private int phoneNumber;
+    private String phoneNumber;
     private String email;
     private boolean isActive;
 
     //Educational
     private String schoolName;
-    private int grade12Result;
+    private String grade12Result;
     private String university;
     private String department;
-    private Long educationalLevel;
-    private int higherLevelResult;
+    private String educationalLevel;
+    private String higherLevelResult;
     private MultipartFile tempo;
     private MultipartFile resume;
     private MultipartFile kebeleId;

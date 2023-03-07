@@ -1,9 +1,9 @@
 package et.com.zablon.TMS.Models;
 
+import et.com.zablon.TMS.Models.Enums.Gender;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Formula;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -20,14 +20,9 @@ public class Tutor extends Model {
     private String customId;
     private Gender gender;
     private Date dateOfBirth;
-    private int phoneNumber;
-    @Transient
-    private String fullName;
-    @Email
+    private String phoneNumber;
     private String email;
     private boolean isActive;
-    @Transient
-    private int Age;
     @OneToOne
     EducationalBackground educationalBackground;
     @OneToOne

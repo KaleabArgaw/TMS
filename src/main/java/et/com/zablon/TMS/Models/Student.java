@@ -1,5 +1,6 @@
 package et.com.zablon.TMS.Models;
 
+import et.com.zablon.TMS.Models.Enums.Gender;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,11 +22,9 @@ public class Student extends Model{
     private String lastName;
     private String customId;
     private Date dateOfBirth;
-    private int phoneNumber;
+    private String phoneNumber;
     private boolean isActive;
     private Gender gender;
-    @Transient
-    private String fullName;
     @OneToOne
     private StudentDetail studentDetail;
     @OneToOne

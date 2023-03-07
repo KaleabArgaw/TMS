@@ -1,13 +1,13 @@
 package et.com.zablon.TMS.Controllers;
 
-import com.sun.istack.Nullable;
 import et.com.zablon.TMS.Dtos.TutorInDto;
 import et.com.zablon.TMS.Models.Tutor;
-import et.com.zablon.TMS.Services.CrudService;
+import et.com.zablon.TMS.Services.FileHandlers.TutorExcelImport;
 import et.com.zablon.TMS.Services.TutorService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
@@ -18,14 +18,20 @@ import java.util.List;
 @Tag(name = "Tutor")
 public class TutorController extends CrudController<Tutor, Long> {
     private final TutorService tutorService;
+    private final TutorExcelImport tutorExcelImport;
+
 
     @Autowired
-    public TutorController(TutorService service) {
+    public TutorController(TutorService service, TutorExcelImport tutorExcelImport) {
         super(service);
         this.tutorService = service;
+        this.tutorExcelImport = tutorExcelImport;
     }
 
-
+    @PostMapping("/import")
+    public List<Tutor> create(MultipartFile request) throws IOException{
+        return tutorExcelImport.excelImport(request);
+    }
     @PostMapping("/create")
     public Tutor create(TutorInDto request) throws IOException{
         return tutorService.create(request);

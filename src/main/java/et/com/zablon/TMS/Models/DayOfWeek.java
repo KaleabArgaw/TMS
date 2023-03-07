@@ -1,6 +1,5 @@
 package et.com.zablon.TMS.Models;
 
-import jdk.jfr.DataAmount;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

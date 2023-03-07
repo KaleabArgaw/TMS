@@ -2,6 +2,7 @@ package et.com.zablon.TMS.Services;
 
 import et.com.zablon.TMS.Dtos.TutorInDto;
 import et.com.zablon.TMS.Models.*;
+import et.com.zablon.TMS.Models.Enums.EducationLevel;
 import et.com.zablon.TMS.Repositories.TutorRepository;
 import et.com.zablon.TMS.Services.FileHandlers.FileHandlerService;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,6 @@ public class TutorService extends CrudService<Tutor, Long> {
     private final GradeDistinctionService gradeDistinctionService;
     private final DaysOfWeekService daysOfWeekService;
     private final AddressService addressService;
-    private final EducationLevelService educationLevelService;
     private final FileHandlerService fileHandlerService;
 
     public TutorService(TutorRepository repository,
@@ -26,7 +26,6 @@ public class TutorService extends CrudService<Tutor, Long> {
                         GradeDistinctionService gradeDistinctionService,
                         DaysOfWeekService daysOfWeekService,
                         AddressService addressService,
-                        EducationLevelService educationLevelService,
                         FileHandlerService fileHandlerService) {
         super(repository, new Tutor());
         this.tutorRepository = repository;
@@ -35,7 +34,6 @@ public class TutorService extends CrudService<Tutor, Long> {
         this.gradeDistinctionService = gradeDistinctionService;
         this.daysOfWeekService = daysOfWeekService;
         this.addressService = addressService;
-        this.educationLevelService = educationLevelService;
         this.fileHandlerService = fileHandlerService;
     }
 
@@ -45,21 +43,19 @@ public class TutorService extends CrudService<Tutor, Long> {
         tutor.setLastName(request.getLastName());
         tutor.setDateOfBirth(request.getDateOfBirth());
         tutor.setEmail(request.getEmail());
-        tutor.setFullName(request.getFirstName() + " " + request.getLastName());
-        tutor.setAge(new Date().getYear() - request.getDateOfBirth().getYear());
         tutor.setGender(request.getGender());
 
         //Educational Background
         EducationalBackground educationalBackground = new EducationalBackground();
         educationalBackground.setGrade12Result(request.getGrade12Result());
-        educationalBackground.setEducationalLevel(educationLevelService.find(request.getEducationalLevel()));
+        educationalBackground.setEducationalLevel(EducationLevel.BSc);
         educationalBackground.setDepartment(request.getDepartment());
         educationalBackground.setHigherLevelResult(request.getHigherLevelResult());
         educationalBackground.setUniversity(request.getUniversity());
         educationalBackground.setSchoolName(request.getSchoolName());
-        educationalBackground.setTempo(fileHandlerService.tempoFile(request.getTempo(), request.getFirstName() + request.getLastName()));
-        educationalBackground.setResume(fileHandlerService.cvUpload(request.getResume(), request.getFirstName() + request.getLastName()));
-        educationalBackground.setKebeleId(fileHandlerService.kebeleId(request.getKebeleId(), request.getFirstName() + request.getLastName()));
+//        educationalBackground.setTempo(fileHandlerService.tempoFile(request.getTempo(), request.getFirstName() + request.getLastName()));
+//        educationalBackground.setResume(fileHandlerService.cvUpload(request.getResume(), request.getFirstName() + request.getLastName()));
+//        educationalBackground.setKebeleId(fileHandlerService.kebeleId(request.getKebeleId(), request.getFirstName() + request.getLastName()));
         EducationalBackground educationalBackground1 = educationalBackgroundService.create(educationalBackground);
         tutor.setEducationalBackground(educationalBackground1);
 
